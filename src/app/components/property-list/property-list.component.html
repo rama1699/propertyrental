@@ -1,0 +1,40 @@
+<div class="property-list">
+  <div class="filters">
+    <h3>Search Properties</h3>
+    <div class="filter-grid">
+      <div class="filter-item">
+        <label>Location:</label>
+        <input type="text" [(ngModel)]="filters.city" placeholder="City">
+      </div>
+      <div class="filter-item">
+        <label>Property Type:</label>
+        <select [(ngModel)]="filters.propertyType">
+          <option value="">All</option>
+          <option value="Apartment">Apartment</option>
+          <option value="House">House</option>
+        </select>
+      </div>
+      <div class="filter-item">
+        <label>Price Range:</label>
+        <div class="price-inputs">
+          <input type="number" [(ngModel)]="filters.minPrice" placeholder="Min">
+          <input type="number" [(ngModel)]="filters.maxPrice" placeholder="Max">
+        </div>
+      </div>
+      <button (click)="searchProperties()">Search</button>
+    </div>
+  </div>
+
+  <div class="properties-grid">
+    <div *ngFor="let property of properties" class="property-card">
+      <h3>{{ property.propertyType }} in {{ property.city }}</h3>
+      <p class="price">${{ property.price }}</p>
+      <div class="property-details">
+        <p>Bedrooms: {{ property.bedroomsCount }}</p>
+        <p>Bathrooms: {{ property.bathroomsCount }}</p>
+        <p>Furnished: {{ property.furnished }}</p>
+      </div>
+      <button (click)="viewProperty(property)">View Details</button>
+    </div>
+  </div>
+</div>

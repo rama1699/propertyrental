@@ -1,0 +1,32 @@
+<div class="login-container">
+  <h2>{{ isLogin ? 'Login' : 'Sign Up' }}</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="user.name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="user.email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" [(ngModel)]="user.phone" name="phone" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="user.password" name="password" required>
+    </div>
+    <div class="form-group">
+      <label>User Type:</label>
+      <select [(ngModel)]="user.type" name="type">
+        <option value="Owner">Owner</option>
+        <option value="Seeker">Seeker</option>
+      </select>
+    </div>
+    <button type="submit">{{ isLogin ? 'Login' : 'Sign Up' }}</button>
+    <p (click)="toggleMode()" class="toggle-mode">
+      {{ isLogin ? 'Need an account? Sign up' : 'Already have an account? Login' }}
+    </p>
+  </form>
+</div>
